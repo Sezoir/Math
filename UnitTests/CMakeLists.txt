@@ -26,7 +26,7 @@ if (ENABLE_UNIT_TESTS)
     add_subdirectory(Catch)
 
     # Add Tests
-
+    add_folder(Containers)
 
     # Add executable
     add_executable(${PROJECT_NAME}
