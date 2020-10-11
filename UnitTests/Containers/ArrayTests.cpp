@@ -79,6 +79,16 @@ TEST_CASE("Array has various iterator methods", "[Array]")
         REQUIRE(*it == 2);
         REQUIRE(*(++it) == 3);
     }
+    SECTION("Testing ranged base for loop")
+    {
+        Math::Array<int, 3> array{1, 2, 3};
+        int i = 0;
+        for(int& value : array)
+        {
+            REQUIRE(array[i] == value);
+            i++;
+        }
+    }
 }
 
 TEST_CASE("Array has several useful functions", "[Array]")
