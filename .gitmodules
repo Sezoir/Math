@@ -1,0 +1,3 @@
+[submodule "Dependencies/Vc"]
+	path = Dependencies/Vc
+	url = https://github.com/VcDevel/Vc.git
