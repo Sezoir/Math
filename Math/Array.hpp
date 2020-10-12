@@ -246,7 +246,18 @@ namespace Math
             return mData[index];
         }
 
-        Array<Type, Size> operator+(Array<Type, Size>& array)
+        template <typename T>
+        Array<T, Size> to()
+        {
+            Array<T, Size> result = {};
+            for(size_t i = 0; i < Size; i++)
+            {
+                result[i] = static_cast<T>(mData[i]);
+            }
+            return std::move(result);
+        }
+
+        Array<Type, Size> operator+(const Array<Type, Size>& array)
         {
             Array<Type, Size> result = {};
             for(int32_t i = 0; i < Size; i++)
@@ -256,7 +267,7 @@ namespace Math
             return std::move(result);
         }
 
-        Array<Type, Size> operator-(Array<Type, Size>& array)
+        Array<Type, Size> operator-(const Array<Type, Size>& array)
         {
             Array<Type, Size> result = {};
             for(int32_t i = 0; i < Size; i++)
@@ -266,7 +277,7 @@ namespace Math
             return std::move(result);
         }
 
-        Array<Type, Size> operator/(Array<Type, Size>& array)
+        Array<Type, Size> operator/(const Array<Type, Size>& array)
         {
             Array<Type, Size> result = {};
             for(int32_t i = 0; i < Size; i++)
@@ -276,7 +287,7 @@ namespace Math
             return std::move(result);
         }
 
-        Array<Type, Size> operator*(Array<Type, Size>& array)
+        Array<Type, Size> operator*(const Array<Type, Size>& array)
         {
             Array<Type, Size> result = {};
             for(int32_t i = 0; i < Size; i++)

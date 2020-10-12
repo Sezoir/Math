@@ -2,7 +2,7 @@
 #include <Catch/catch.hpp>
 // Math lib
 #include <Array.hpp>
-
+#include <iostream>
 TEST_CASE("Arrays can be created through various methods", "[Array]")
 {
     SECTION("Creating an array from initializer list")
@@ -15,6 +15,13 @@ TEST_CASE("Arrays can be created through various methods", "[Array]")
     SECTION("Creating an array from an array")
     {
         Math::Array<int, 3> array = {2, 3, 4};
+        REQUIRE(array[0] == 2);
+        REQUIRE(array[1] == 3);
+        REQUIRE(array[2] == 4);
+    }
+    SECTION("Testing conversion of r-values to array type with std::forward")
+    {
+        Math::Array<float, 3> array = {2, 3, 4};
         REQUIRE(array[0] == 2);
         REQUIRE(array[1] == 3);
         REQUIRE(array[2] == 4);
@@ -112,6 +119,15 @@ TEST_CASE("Array has several useful functions", "[Array]")
         REQUIRE(arrayTwo[0] == 1);
         REQUIRE(arrayTwo[1] == 2);
         REQUIRE(arrayTwo[2] == 3);
+    }
+    SECTION("Testing conversion to function")
+    {
+        Math::Array<int, 3> arrayOne{1, 2, 3};
+        Math::Array<float, 3> arrayTwo{4, 5, 6};
+        Math::Array<int, 3> result = arrayOne + arrayTwo.to<int>();
+        REQUIRE(result[0] == 5);
+        REQUIRE(result[1] == 7);
+        REQUIRE(result[2] == 9);
     }
 }
 
