@@ -208,4 +208,14 @@ TEST_CASE("Operator overloads", "[Array]")
             REQUIRE(arrayOne[2] == -18);
         }
     }
+    SECTION("Testing comparison operators")
+    {
+        SECTION("== overload")
+        {
+            Math::Array<int, 3> arrayOne = {1, 2, 3};
+            Math::Array<int, 3> arrayTwo = {1, 2, 3};
+
+            REQUIRE((arrayOne == arrayTwo));
+        }
+    }
 }

@@ -63,7 +63,7 @@ namespace Math
             return Iterator(mData);
         }
 
-        ConstIterator cbegin()
+        ConstIterator cbegin() const
         {
             return ConstIterator(mData);
         }
@@ -73,7 +73,7 @@ namespace Math
             return Iterator(mData, Size - 1);
         }
 
-        ConstIterator cend()
+        ConstIterator cend() const
         {
             return ConstIterator(mData, Size - 1);
         }
@@ -177,6 +177,11 @@ namespace Math
                 mData[i] = mData[i] * array[i];
             }
             return *this;
+        }
+
+        constexpr bool operator==(Array<Type, Size>& arrayRhs) const
+        {
+            return std::move(std::equal(cbegin(), cbegin() + Size, arrayRhs.cbegin()));
         }
 
     private:
