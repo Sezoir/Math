@@ -169,4 +169,40 @@ TEST_CASE("Operator overloads", "[Array]")
         REQUIRE(result[1] == 10);
         REQUIRE(result[2] == -18);
     }
+    SECTION("Testing += overload")
+    {
+        Math::Array<int, 3> arrayOne{1, 2, 3};
+        Math::Array<int, 3> arrayTwo{4, 5, 6};
+        arrayOne += arrayTwo;
+        REQUIRE(arrayOne[0] == 5);
+        REQUIRE(arrayOne[1] == 7);
+        REQUIRE(arrayOne[2] == 9);
+    }
+    SECTION("Testing -= overload")
+    {
+        Math::Array<int, 3> arrayOne{1, 7, -3};
+        Math::Array<int, 3> arrayTwo{4, 5, 6};
+        arrayOne -= arrayTwo;
+        REQUIRE(arrayOne[0] == -3);
+        REQUIRE(arrayOne[1] == 2);
+        REQUIRE(arrayOne[2] == -9);
+    }
+    SECTION("Testing /= overload")
+    {
+        Math::Array<float, 3> arrayOne{8, -10, 3};
+        Math::Array<float, 3> arrayTwo{4, 5, 6};
+        arrayOne /= arrayTwo;
+        REQUIRE(arrayOne[0] == 2);
+        REQUIRE(arrayOne[1] == -2);
+        REQUIRE(arrayOne[2] == 0.5);
+    }
+    SECTION("Testing *= overload")
+    {
+        Math::Array<int, 3> arrayOne{1, 2, -3};
+        Math::Array<int, 3> arrayTwo{4, 5, 6};
+        arrayOne *= arrayTwo;
+        REQUIRE(arrayOne[0] == 4);
+        REQUIRE(arrayOne[1] == 10);
+        REQUIRE(arrayOne[2] == -18);
+    }
 }

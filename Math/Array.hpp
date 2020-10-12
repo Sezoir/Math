@@ -297,6 +297,42 @@ namespace Math
             return std::move(result);
         }
 
+        Array<Type, Size>& operator+=(const Array<Type, Size>& array)
+        {
+            for(int32_t i = 0; i < Size; i++)
+            {
+                mData[i] = mData[i] + array[i];
+            }
+            return *this;
+        }
+
+        Array<Type, Size>& operator-=(const Array<Type, Size>& array)
+        {
+            for(int32_t i = 0; i < Size; i++)
+            {
+                mData[i] = mData[i] - array[i];
+            }
+            return *this;
+        }
+
+        Array<Type, Size>& operator/=(const Array<Type, Size>& array)
+        {
+            for(int32_t i = 0; i < Size; i++)
+            {
+                mData[i] = mData[i] / array[i];
+            }
+            return *this;
+        }
+
+        Array<Type, Size>& operator*=(const Array<Type, Size>& array)
+        {
+            for(int32_t i = 0; i < Size; i++)
+            {
+                mData[i] = mData[i] * array[i];
+            }
+            return *this;
+        }
+
     private:
         Type mData[Size] = {0};
     };
