@@ -133,76 +133,79 @@ TEST_CASE("Array has several useful functions", "[Array]")
 
 TEST_CASE("Operator overloads", "[Array]")
 {
-    SECTION("Testing + overload")
+    SECTION("Testing arithmetic operators")
     {
-        Math::Array<int, 3> arrayOne{1, 2, 3};
-        Math::Array<int, 3> arrayTwo{4, 5, 6};
-        Math::Array<int, 3> result = arrayOne + arrayTwo;
-        REQUIRE(result[0] == 5);
-        REQUIRE(result[1] == 7);
-        REQUIRE(result[2] == 9);
-    }
-    SECTION("Testing - overload")
-    {
-        Math::Array<int, 3> arrayOne{1, 2, 13};
-        Math::Array<int, 3> arrayTwo{4, 7, 9};
-        Math::Array<int, 3> result = arrayOne - arrayTwo;
-        REQUIRE(result[0] == -3);
-        REQUIRE(result[1] == -5);
-        REQUIRE(result[2] == 4);
-    }
-    SECTION("Testing / overload")
-    {
-        Math::Array<float, 3> arrayOne{6, 10, 3};
-        Math::Array<float, 3> arrayTwo{2, 5, 6};
-        Math::Array<float, 3> result = arrayOne / arrayTwo;
-        REQUIRE(result[0] == 3);
-        REQUIRE(result[1] == 2);
-        REQUIRE(result[2] == 0.5);
-    }
-    SECTION("Testing * overload")
-    {
-        Math::Array<int, 3> arrayOne{1, 2, -3};
-        Math::Array<int, 3> arrayTwo{4, 5, 6};
-        Math::Array<int, 3> result = arrayOne * arrayTwo;
-        REQUIRE(result[0] == 4);
-        REQUIRE(result[1] == 10);
-        REQUIRE(result[2] == -18);
-    }
-    SECTION("Testing += overload")
-    {
-        Math::Array<int, 3> arrayOne{1, 2, 3};
-        Math::Array<int, 3> arrayTwo{4, 5, 6};
-        arrayOne += arrayTwo;
-        REQUIRE(arrayOne[0] == 5);
-        REQUIRE(arrayOne[1] == 7);
-        REQUIRE(arrayOne[2] == 9);
-    }
-    SECTION("Testing -= overload")
-    {
-        Math::Array<int, 3> arrayOne{1, 7, -3};
-        Math::Array<int, 3> arrayTwo{4, 5, 6};
-        arrayOne -= arrayTwo;
-        REQUIRE(arrayOne[0] == -3);
-        REQUIRE(arrayOne[1] == 2);
-        REQUIRE(arrayOne[2] == -9);
-    }
-    SECTION("Testing /= overload")
-    {
-        Math::Array<float, 3> arrayOne{8, -10, 3};
-        Math::Array<float, 3> arrayTwo{4, 5, 6};
-        arrayOne /= arrayTwo;
-        REQUIRE(arrayOne[0] == 2);
-        REQUIRE(arrayOne[1] == -2);
-        REQUIRE(arrayOne[2] == 0.5);
-    }
-    SECTION("Testing *= overload")
-    {
-        Math::Array<int, 3> arrayOne{1, 2, -3};
-        Math::Array<int, 3> arrayTwo{4, 5, 6};
-        arrayOne *= arrayTwo;
-        REQUIRE(arrayOne[0] == 4);
-        REQUIRE(arrayOne[1] == 10);
-        REQUIRE(arrayOne[2] == -18);
+        SECTION("+ overload")
+        {
+            Math::Array<int, 3> arrayOne{1, 2, 3};
+            Math::Array<int, 3> arrayTwo{4, 5, 6};
+            Math::Array<int, 3> result = arrayOne + arrayTwo;
+            REQUIRE(result[0] == 5);
+            REQUIRE(result[1] == 7);
+            REQUIRE(result[2] == 9);
+        }
+        SECTION("- overload")
+        {
+            Math::Array<int, 3> arrayOne{1, 2, 13};
+            Math::Array<int, 3> arrayTwo{4, 7, 9};
+            Math::Array<int, 3> result = arrayOne - arrayTwo;
+            REQUIRE(result[0] == -3);
+            REQUIRE(result[1] == -5);
+            REQUIRE(result[2] == 4);
+        }
+        SECTION("/ overload")
+        {
+            Math::Array<float, 3> arrayOne{6, 10, 3};
+            Math::Array<float, 3> arrayTwo{2, 5, 6};
+            Math::Array<float, 3> result = arrayOne / arrayTwo;
+            REQUIRE(result[0] == 3);
+            REQUIRE(result[1] == 2);
+            REQUIRE(result[2] == 0.5);
+        }
+        SECTION("* overload")
+        {
+            Math::Array<int, 3> arrayOne{1, 2, -3};
+            Math::Array<int, 3> arrayTwo{4, 5, 6};
+            Math::Array<int, 3> result = arrayOne * arrayTwo;
+            REQUIRE(result[0] == 4);
+            REQUIRE(result[1] == 10);
+            REQUIRE(result[2] == -18);
+        }
+        SECTION("+= overload")
+        {
+            Math::Array<int, 3> arrayOne{1, 2, 3};
+            Math::Array<int, 3> arrayTwo{4, 5, 6};
+            arrayOne += arrayTwo;
+            REQUIRE(arrayOne[0] == 5);
+            REQUIRE(arrayOne[1] == 7);
+            REQUIRE(arrayOne[2] == 9);
+        }
+        SECTION("-= overload")
+        {
+            Math::Array<int, 3> arrayOne{1, 7, -3};
+            Math::Array<int, 3> arrayTwo{4, 5, 6};
+            arrayOne -= arrayTwo;
+            REQUIRE(arrayOne[0] == -3);
+            REQUIRE(arrayOne[1] == 2);
+            REQUIRE(arrayOne[2] == -9);
+        }
+        SECTION("/= overload")
+        {
+            Math::Array<float, 3> arrayOne{8, -10, 3};
+            Math::Array<float, 3> arrayTwo{4, 5, 6};
+            arrayOne /= arrayTwo;
+            REQUIRE(arrayOne[0] == 2);
+            REQUIRE(arrayOne[1] == -2);
+            REQUIRE(arrayOne[2] == 0.5);
+        }
+        SECTION("*= overload")
+        {
+            Math::Array<int, 3> arrayOne{1, 2, -3};
+            Math::Array<int, 3> arrayTwo{4, 5, 6};
+            arrayOne *= arrayTwo;
+            REQUIRE(arrayOne[0] == 4);
+            REQUIRE(arrayOne[1] == 10);
+            REQUIRE(arrayOne[2] == -18);
+        }
     }
 }
