@@ -17,7 +17,7 @@ namespace Math
 
         template <typename... Args>
         constexpr Array(Args... args)
-            : mData{std::forward<Args>(args)...}
+            : mData{std::forward<Type>(args)...}
         {
         }
 
@@ -244,6 +244,46 @@ namespace Math
         const Type& operator[](size_t index) const
         {
             return mData[index];
+        }
+
+        Array<Type, Size> operator+(Array<Type, Size>& array)
+        {
+            Array<Type, Size> result = {};
+            for(int32_t i = 0; i < Size; i++)
+            {
+                result[i] = mData[i] + array.mData[i];
+            }
+            return std::move(result);
+        }
+
+        Array<Type, Size> operator-(Array<Type, Size>& array)
+        {
+            Array<Type, Size> result = {};
+            for(int32_t i = 0; i < Size; i++)
+            {
+                result[i] = mData[i] - array.mData[i];
+            }
+            return std::move(result);
+        }
+
+        Array<Type, Size> operator/(Array<Type, Size>& array)
+        {
+            Array<Type, Size> result = {};
+            for(int32_t i = 0; i < Size; i++)
+            {
+                result[i] = mData[i] / array.mData[i];
+            }
+            return std::move(result);
+        }
+
+        Array<Type, Size> operator*(Array<Type, Size>& array)
+        {
+            Array<Type, Size> result = {};
+            for(int32_t i = 0; i < Size; i++)
+            {
+                result[i] = mData[i] * array.mData[i];
+            }
+            return std::move(result);
         }
 
     private:
