@@ -217,5 +217,12 @@ TEST_CASE("Operator overloads", "[Array]")
 
             REQUIRE((arrayOne == arrayTwo));
         }
+        SECTION("!= overload")
+        {
+            Math::Array<int, 3> arrayOne = {1, 2, 3};
+            Math::Array<int, 3> arrayTwo = {2, 2, 3};
+
+            REQUIRE((arrayOne != arrayTwo));
+        }
     }
 }

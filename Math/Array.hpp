@@ -93,7 +93,7 @@ namespace Math
         }
 
         template <typename T>
-        Array<T, Size> to()
+        Array<T, Size> to() const
         {
             Array<T, Size> result = {};
             for(size_t i = 0; i < Size; i++)
@@ -103,7 +103,7 @@ namespace Math
             return std::move(result);
         }
 
-        Array<Type, Size> operator+(const Array<Type, Size>& array)
+        Array<Type, Size> operator+(const Array<Type, Size>& array) const
         {
             Array<Type, Size> result = {};
             for(int32_t i = 0; i < Size; i++)
@@ -113,7 +113,7 @@ namespace Math
             return std::move(result);
         }
 
-        Array<Type, Size> operator-(const Array<Type, Size>& array)
+        Array<Type, Size> operator-(const Array<Type, Size>& array) const
         {
             Array<Type, Size> result = {};
             for(int32_t i = 0; i < Size; i++)
@@ -123,7 +123,7 @@ namespace Math
             return std::move(result);
         }
 
-        Array<Type, Size> operator/(const Array<Type, Size>& array)
+        Array<Type, Size> operator/(const Array<Type, Size>& array) const
         {
             Array<Type, Size> result = {};
             for(int32_t i = 0; i < Size; i++)
@@ -133,7 +133,7 @@ namespace Math
             return std::move(result);
         }
 
-        Array<Type, Size> operator*(const Array<Type, Size>& array)
+        Array<Type, Size> operator*(const Array<Type, Size>& array) const
         {
             Array<Type, Size> result = {};
             for(int32_t i = 0; i < Size; i++)
@@ -179,9 +179,14 @@ namespace Math
             return *this;
         }
 
-        constexpr bool operator==(Array<Type, Size>& arrayRhs) const
+        bool operator==(Array<Type, Size>& arrayRhs) const
         {
-            return std::move(std::equal(cbegin(), cbegin() + Size, arrayRhs.cbegin()));
+            return std::move(std::equal(cbegin(), cend(), arrayRhs.cbegin()));
+        }
+
+        bool operator!=(Array<Type, Size>& arrayRhs) const
+        {
+            return std::move(!std::equal(cbegin(), cend(), arrayRhs.cbegin()));
         }
 
     private:
