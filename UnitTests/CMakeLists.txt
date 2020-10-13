@@ -11,7 +11,7 @@ OPTION(ENABLE_UNIT_TESTS "Enables all unit tests." OFF)
 # Unit tests
 #########################################################
 # Add each folder for testing
-function (add_folder FOLDER)
+function(add_folder FOLDER)
     # Get all source files
     file(GLOB_RECURSE GLOB_RESULT CONFIGURE_DEPENDS ${FOLDER}/*.c ${FOLDER}/*.cpp)
     # Append source files
@@ -33,12 +33,16 @@ if (ENABLE_UNIT_TESTS)
             main.cpp
             ${SOURCE_FILES}
             )
-
     # Set c++ standard
     target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
 
+    # Pass flag for big source files for GNU (due to many SECTIONS resulting in assembler errors)
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -Wa,-mbig-obj)
+    endif ()
+
     # Link libraries
     target_link_libraries(${PROJECT_NAME} PUBLIC
-            Math    Catch
+            Math Catch
             )
 endif (ENABLE_UNIT_TESTS)
